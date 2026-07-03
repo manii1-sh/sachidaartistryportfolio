@@ -141,7 +141,7 @@ function Reveal({
 
 function Portfolio() {
   return (
-    <main className="bg-[color:var(--color-cream)] text-[color:var(--color-ink)] overflow-x-clip">
+    <main className="bg-[color:var(--color-cream)] text-[color:var(--color-ink)] overflow-x-hidden">
       <Nav />
       <Cover />
       <About />
@@ -328,8 +328,8 @@ function Cover() {
             </div>
 
             {/* Sub-tagline */}
-            <p className="tracking-[0.32em] uppercase text-[12px] lg:text-[13px] text-[color:var(--color-accent-brown)] font-medium">
-              Preserving Moments in Resin
+            <p className="tracking-[0.28em] text-[12px] lg:text-[13px] text-[color:var(--color-accent-brown)] font-medium leading-relaxed">
+              Preserving memories through art.<br />Self taught resin artist
             </p>
 
             {/* Description quote */}
@@ -390,7 +390,8 @@ function Cover() {
             </div>
 
             <p className="tracking-[0.20em] sm:tracking-[0.24em] uppercase text-[10px] sm:text-[11px] text-[color:var(--color-accent-brown)] font-medium">
-              Preserving Moments in Resin
+              Preserving memories through art.
+              Self taught resin artist
             </p>
 
             <blockquote className="border-l-2 border-[color:var(--color-rose-gold)] pl-3 sm:pl-4 my-1 sm:my-2">
@@ -458,7 +459,7 @@ function About() {
     <section id="about" className="bg-[color:var(--color-cream-2)]">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-12 py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="grid grid-cols-12 gap-8 md:gap-10 items-center">
-          <Reveal className="col-span-12 md:col-span-5">
+          <Reveal className="col-span-12 md:col-span-5 px-3 sm:px-4 md:px-0">
             <div className="relative max-w-sm mx-auto md:max-w-none">
               <div className="absolute -inset-3 sm:-inset-4 border border-[color:var(--color-rose-gold)]/40" />
               <div className="relative overflow-hidden aspect-[4/5]">
@@ -660,7 +661,7 @@ function ArtForms() {
   return (
     <section id="work" className="bg-[color:var(--color-cream-2)]">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-24 md:py-32">
-        <SectionHeader n="04" eyebrow="My Art Forms" title="Small objects, kept for a long time" />
+        <SectionHeader n="04" eyebrow="MY ART FORMS" title="Stories You Can Hold Forever" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14">
           {artForms.map((f, i) => (
@@ -701,14 +702,14 @@ function ArtForms() {
 function MyStory() {
   return (
     <section id="story" className="bg-[color:var(--color-chocolate)] text-[color:var(--color-cream)]">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-24 md:py-32">
-        <div className="grid grid-cols-12 gap-10 items-center">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-12 py-20 sm:py-24 md:py-32">
+        <div className="grid grid-cols-12 gap-8 sm:gap-10 items-center">
           <Reveal className="col-span-12 md:col-span-6">
             <div className="text-[color:var(--color-rose-gold)] tracking-eyebrow">— 05 —</div>
-            <h2 className="mt-4 text-5xl md:text-6xl font-[family-name:var(--font-display)] leading-[1.05]">
+            <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-[family-name:var(--font-display)] leading-[1.1] sm:leading-[1.05]">
               About <span className="script text-[color:var(--color-rose-gold)]">My Art</span>
             </h2>
-            <p className="mt-8 max-w-lg text-[15px] leading-8 font-light text-[color:var(--color-cream)]/85">
+            <p className="mt-6 sm:mt-8 max-w-lg text-[14px] sm:text-[15px] leading-[1.75] sm:leading-8 font-light text-[color:var(--color-cream)]/85">
               For me, art is more than creating something beautiful—it's about
               turning memories into treasures that can be cherished forever.
               Every piece is handcrafted with patience, love, and attention to detail.
@@ -716,22 +717,22 @@ function MyStory() {
               That's the beauty of handmade art—each creation carries its own character,
               its own story, and a little piece of my heart.
             </p>
-            <p className="mt-6 max-w-lg text-[15px] leading-8 font-light text-[color:var(--color-cream)]/85">
+            <p className="mt-4 sm:mt-6 max-w-lg text-[14px] sm:text-[15px] leading-[1.75] sm:leading-8 font-light text-[color:var(--color-cream)]/85">
 
               This portfolio is a reflection of my journey, my passion, and the memories
               I've been privileged to preserve through art.
             </p>
 
-            <blockquote className="mt-12 border-l border-[color:var(--color-rose-gold)] pl-6">
-              <p className="font-[family-name:var(--font-display)] italic text-xl md:text-2xl leading-relaxed text-[color:var(--color-cream)]/90">
+            <blockquote className="mt-10 sm:mt-12 border-l border-[color:var(--color-rose-gold)] pl-4 sm:pl-6">
+              <p className="font-[family-name:var(--font-display)] italic text-lg sm:text-xl md:text-2xl leading-relaxed text-[color:var(--color-cream)]/90">
                 &ldquo;For me, art is more than making something beautiful — it&rsquo;s
                 turning memories into treasures that can be kept forever.&rdquo;
               </p>
-              <p className="mt-4 tracking-eyebrow text-[color:var(--color-rose-gold)]">— Sachida</p>
+              <p className="mt-3 sm:mt-4 tracking-eyebrow text-[color:var(--color-rose-gold)]">— Sachida</p>
             </blockquote>
           </Reveal>
 
-          <Reveal delay={150} className="col-span-12 md:col-span-6">
+          <Reveal delay={150} className="col-span-12 md:col-span-6 px-3 sm:px-4 md:px-0">
             <div className="relative">
               <div className="absolute -inset-3 border border-[color:var(--color-rose-gold)]/40" />
               <img
@@ -852,7 +853,7 @@ function VarmalaPreservation() {
               a custom, crystal-clear resin design to create a timeless keepsake.
             </p>
           </Reveal>
-          <Reveal delay={150} className="col-span-12 md:col-span-6">
+          <Reveal delay={150} className="col-span-12 md:col-span-6 px-3 sm:px-4 md:px-0">
             <div className="relative">
               <div className="absolute -inset-3 border border-[color:var(--color-rose-gold)]/40" />
               <img
@@ -921,7 +922,7 @@ function HomeDecorClocks() {
               sweeps, all cast in a bespoke resin frame.
             </p>
           </Reveal>
-          <Reveal delay={150} className="col-span-12 md:col-span-6">
+          <Reveal delay={150} className="col-span-12 md:col-span-6 px-3 sm:px-4 md:px-0">
             <div className="relative">
               <div className="absolute -inset-3 border border-[color:var(--color-rose-gold)]/40" />
               <img
@@ -988,9 +989,9 @@ function BulkOrders() {
               href="https://wa.me/919541887431?text=Hello%20Sachida,%20I%20would%20like%20to%20enquire%20about%20bulk%20and%20wedding%20orders."
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-10 self-start text-[12px] tracking-[0.24em] uppercase border border-[color:var(--color-dark-brown)] text-[color:var(--color-dark-brown)] px-6 py-3 hover:bg-[color:var(--color-dark-brown)] hover:text-[color:var(--color-cream)] transition-colors"
+              className="mt-10 self-start text-[13px] font-semibold tracking-[0.20em] uppercase border-2 border-[color:var(--color-rose-gold)] text-[color:var(--color-rose-gold)] bg-[color:var(--color-rose-gold)]/5 px-8 py-3.5 hover:bg-[color:var(--color-rose-gold)] hover:text-[color:var(--color-cream)] transition-all duration-300 shadow-sm hover:shadow-md"
             >
-              Enquire for Bulk
+              Message for Enquiry
             </a>
           </Reveal>
         </div>
@@ -1175,7 +1176,7 @@ function Contact() {
         <div className="grid grid-cols-12 gap-8 sm:gap-10 items-center">
 
           {/* Portrait */}
-          <Reveal className="col-span-12 md:col-span-5">
+          <Reveal className="col-span-12 md:col-span-5 px-4 sm:px-6 md:px-0">
             <div className="relative max-w-sm mx-auto md:max-w-none">
               <div className="absolute inset-x-4 sm:inset-x-6 top-0 h-[92%] rounded-t-full bg-[color:var(--color-chocolate)]" />
               <div className="relative overflow-hidden rounded-t-full aspect-[3/4] mx-4 sm:mx-6">
