@@ -496,8 +496,8 @@ function MyStory() {
   return (
     <section id="story" className="bg-[color:var(--color-chocolate)] text-[color:var(--color-cream)]">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-12 py-20 sm:py-24 md:py-32">
-        <div className="grid grid-cols-12 gap-8 sm:gap-10 items-center">
-          <Reveal className="col-span-12 md:col-span-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 items-center">
+          <Reveal className="col-span-1 md:col-span-6">
             <div className="text-[color:var(--color-rose-gold)] tracking-eyebrow">— 05 —</div>
             <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-[family-name:var(--font-display)] leading-[1.1] sm:leading-[1.05]">
               About <span className="script text-[color:var(--color-rose-gold)]">My Art</span>
@@ -525,7 +525,7 @@ function MyStory() {
             </blockquote>
           </Reveal>
 
-          <Reveal delay={150} className="col-span-12 md:col-span-6 px-3 sm:px-4 md:px-0">
+          <Reveal delay={150} className="col-span-1 md:col-span-6 px-3 sm:px-4 md:px-0">
             <div className="relative">
               <div className="absolute -inset-3 border border-[color:var(--color-rose-gold)]/40" />
               <img
@@ -556,8 +556,8 @@ function WhyHandmade() {
   return (
     <section className="bg-[color:var(--color-cream)]">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-24 md:py-32">
-        <div className="grid grid-cols-12 gap-10">
-          <Reveal className="col-span-12 md:col-span-5">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          <Reveal className="col-span-1 md:col-span-5">
             <PageNumber n="06" />
             <Eyebrow>Why Handmade</Eyebrow>
             <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.1] sm:leading-[1.05]">
@@ -570,7 +570,7 @@ function WhyHandmade() {
             </p>
           </Reveal>
 
-          <Reveal delay={150} className="col-span-12 md:col-span-7 md:pl-10">
+          <Reveal delay={150} className="col-span-1 md:col-span-7 md:pl-10">
             <ul className="divide-y divide-[color:var(--color-border)] border-y border-[color:var(--color-border)]">
               {values.map(([t, d], i) => (
                 <li key={t} className="flex flex-col sm:grid sm:grid-cols-12 items-start sm:items-baseline gap-2 sm:gap-6 py-5 sm:py-7">
@@ -599,8 +599,8 @@ function Signature() {
   return (
     <section className="bg-[color:var(--color-cream-2)]">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-24 md:py-32">
-        <div className="grid grid-cols-12 gap-10 items-start">
-          <Reveal className="col-span-12 md:col-span-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+          <Reveal className="col-span-1 md:col-span-6">
             <img
               src={engagementPlatter1}
               alt="Signature engagement platter close up"
@@ -608,7 +608,7 @@ function Signature() {
               className="w-full aspect-[4/5] object-cover"
             />
           </Reveal>
-          <Reveal delay={150} className="col-span-12 md:col-span-6 md:pl-6">
+          <Reveal delay={150} className="col-span-1 md:col-span-6 md:pl-6">
             <PageNumber n="07" />
             <Eyebrow>Signature Collection</Eyebrow>
             <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.1] sm:leading-[1.05]">
@@ -643,8 +643,8 @@ function WeddingCards() {
   return (
     <section className="bg-[color:var(--color-cream-2)]">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-24 md:py-32">
-        <div className="grid grid-cols-12 gap-10 items-start">
-          <Reveal className="col-span-12 md:col-span-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+          <Reveal className="col-span-1 md:col-span-6">
             <img
               src={weddingCards}
               alt="Bespoke wedding cards design"
@@ -652,7 +652,7 @@ function WeddingCards() {
               className="w-full aspect-[4/5] object-cover"
             />
           </Reveal>
-          <Reveal delay={150} className="col-span-12 md:col-span-6 md:pl-6 flex flex-col justify-start">
+          <Reveal delay={150} className="col-span-1 md:col-span-6 md:pl-6 flex flex-col justify-start">
             <PageNumber n="09" />
             <Eyebrow>Stationery Collection</Eyebrow>
             <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.1] sm:leading-[1.05]">
@@ -696,8 +696,8 @@ function BulkOrders() {
   return (
     <section className="bg-[color:var(--color-cream)]">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-24 md:py-32">
-        <div className="grid grid-cols-12 gap-10">
-          <Reveal className="col-span-12 md:col-span-7">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          <Reveal className="col-span-1 md:col-span-7">
             <img
               src={bulkOrderImg}
               alt="Bulk and wedding order collection"
@@ -705,7 +705,7 @@ function BulkOrders() {
               className="w-full aspect-[5/4] object-cover"
             />
           </Reveal>
-          <Reveal delay={150} className="col-span-12 md:col-span-5 md:pl-4 flex flex-col justify-center">
+          <Reveal delay={150} className="col-span-1 md:col-span-5 md:pl-4 flex flex-col justify-center">
             <PageNumber n="11" />
             <Eyebrow>Bulk & Wedding Orders</Eyebrow>
             <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.1] sm:leading-[1.05]">
@@ -760,8 +760,8 @@ function Process() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-24 md:py-32">
         <SectionHeader n="12" eyebrow="Creative Process" title="Eight quiet steps" />
 
-        <div className="grid grid-cols-12 gap-10">
-          <Reveal className="col-span-12 md:col-span-5">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          <Reveal className="col-span-1 md:col-span-5">
             <img
               src={processImg}
               alt="Hands placing dried flowers into resin"
@@ -770,7 +770,7 @@ function Process() {
             />
           </Reveal>
 
-          <Reveal delay={150} className="col-span-12 md:col-span-7 md:pl-6">
+          <Reveal delay={150} className="col-span-1 md:col-span-7 md:pl-6">
             <ol className="relative border-l border-[color:var(--color-rose-gold)]/60">
               {steps.map(([t, d], i) => (
                 <li key={t} className="pl-8 pb-10 last:pb-0 relative">

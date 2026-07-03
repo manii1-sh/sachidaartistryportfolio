@@ -5,9 +5,9 @@ import { Reveal } from "../shared/Reveal";
 export function Contact() {
   return (
     <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-12 py-16 sm:py-20 md:py-32">
-      <div className="grid grid-cols-12 gap-8 md:gap-10 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center">
         {/* Portrait */}
-        <Reveal className="col-span-12 md:col-span-5">
+        <Reveal className="col-span-1 md:col-span-5">
           <div className="relative max-w-sm mx-auto md:max-w-none">
             {/* Arched background - only on desktop to prevent mobile alignment issues */}
             <div className="hidden md:block absolute inset-x-6 top-0 h-[92%] rounded-t-full bg-[color:var(--color-chocolate)]" />
@@ -26,7 +26,7 @@ export function Contact() {
         </Reveal>
 
         {/* Right side content */}
-        <Reveal delay={150} className="col-span-12 md:col-span-7 md:pl-6">
+        <Reveal delay={150} className="col-span-1 md:col-span-7 md:pl-6">
           <div className="text-[color:var(--color-rose-gold)] tracking-eyebrow text-center md:text-left">— 15 —</div>
           <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] leading-[1.15] sm:leading-[1.1] text-center md:text-left">
             Let&rsquo;s create something <span className="script text-[color:var(--color-rose-gold)]">beautiful</span>

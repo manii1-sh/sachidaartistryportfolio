@@ -5,9 +5,9 @@ import { Eyebrow } from "../shared/Eyebrow";
 export function About() {
   return (
     <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-12 py-16 sm:py-20 md:py-32">
-      <div className="grid grid-cols-12 gap-8 md:gap-10 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center">
         {/* Image Container */}
-        <Reveal className="col-span-12 md:col-span-5">
+        <Reveal className="col-span-1 md:col-span-5">
           <div className="relative max-w-sm mx-auto md:max-w-none">
             {/* Elegant border frame shown only on md/desktop to avoid mobile overflow */}
             <div className="hidden md:block absolute -inset-4 border border-[color:var(--color-rose-gold)]/40" />
@@ -25,7 +25,7 @@ export function About() {
         </Reveal>
 
         {/* Text Container */}
-        <Reveal delay={150} className="col-span-12 md:col-span-7 md:pl-10">
+        <Reveal delay={150} className="col-span-1 md:col-span-7 md:pl-10">
           <Eyebrow>About the Artist</Eyebrow>
           <h2 className="mt-4 sm:mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[color:var(--color-dark-brown)] leading-[1.1] sm:leading-[1.05]">
             Hi, I&rsquo;m <span className="script text-[color:var(--color-accent-brown)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl">Sachida</span>

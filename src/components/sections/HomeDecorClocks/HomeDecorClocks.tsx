@@ -6,9 +6,9 @@ import { Eyebrow } from "../shared/Eyebrow";
 export function HomeDecorClocks() {
   return (
     <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-16 sm:py-24 md:py-32">
-      <div className="grid grid-cols-12 gap-8 md:gap-10 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center">
         {/* Text Area */}
-        <Reveal className="col-span-12 md:col-span-6 md:pr-6 flex flex-col justify-start">
+        <Reveal className="col-span-1 md:col-span-6 md:pr-6 flex flex-col justify-start">
           <PageNumber n="10" />
           <Eyebrow>Artistic Collection</Eyebrow>
           <h2 className="mt-4 sm:mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.1] sm:leading-[1.05]">
@@ -22,7 +22,7 @@ export function HomeDecorClocks() {
         </Reveal>
 
         {/* Image Area */}
-        <Reveal delay={150} className="col-span-12 md:col-span-6">
+        <Reveal delay={150} className="col-span-1 md:col-span-6">
           <div className="relative max-w-md mx-auto md:max-w-none">
             <div className="hidden md:block absolute -inset-3 border border-[color:var(--color-rose-gold)]/40" />
             <img
