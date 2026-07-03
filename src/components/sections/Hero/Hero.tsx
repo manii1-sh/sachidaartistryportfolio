@@ -6,7 +6,7 @@ export function Hero() {
     <div className="flex flex-col w-full">
       {/* Mobile-only Top Image */}
       <div
-        className="md:hidden w-full h-[280px] sm:h-[340px] bg-cover bg-no-repeat bg-[position:82%_center]"
+        className="md:hidden w-full h-[320px] sm:h-[380px] bg-cover bg-no-repeat bg-[position:82%_top]"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
 
