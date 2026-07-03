@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { Menu, X } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 import portraitHero from "@/assets/dc30023a-9d90-43ac-a980-590523d4679d.png";
 import heroBg from "@/assets/hero-bg.png";
@@ -75,10 +81,10 @@ function SectionHeader({
   title: React.ReactNode;
 }) {
   return (
-    <div className="mb-14 flex flex-col items-center text-center gap-4">
+    <div className="mb-10 sm:mb-12 md:mb-14 flex flex-col items-center text-center gap-3 sm:gap-4 px-4">
       <PageNumber n={n} />
       <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="text-4xl md:text-6xl leading-[1.05] text-[color:var(--color-dark-brown)]">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] sm:leading-[1.05] text-[color:var(--color-dark-brown)] max-w-4xl">
         {title}
       </h2>
       <Ornament />
@@ -168,16 +174,35 @@ function Nav() {
     ["05", "Process", "#process"],
     ["06", "Contact", "#contact"],
   ] as const;
+  
+  const [open, setOpen] = useState(false);
+
+  const handleNavClick = (href: string) => {
+    setOpen(false);
+    // Small delay to allow sheet to close before scrolling
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-[color:var(--color-cream)]/85 border-b border-[color:var(--color-border)]">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-1.5 flex items-center justify-between gap-6">
-        <a href="#top" className="flex items-center gap-3">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 md:px-12 py-1.5 flex items-center justify-between gap-4">
+        <a href="#top" className="flex items-center gap-2 sm:gap-3">
           <img
             src={logo}
             alt="Sachida Artistry logo"
-            className="h-16 w-auto object-contain"
+            className="h-12 sm:h-14 md:h-16 w-auto object-contain"
           />
+          <span className="lg:hidden script text-[color:var(--color-accent-brown)] text-xl sm:text-2xl">
+            sachidaartistry
+          </span>
         </a>
+        
+        {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           {items.map(([, label, href]) => (
             <a
@@ -189,7 +214,75 @@ function Nav() {
             </a>
           ))}
         </nav>
-      
+
+        {/* Mobile Navigation */}
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <button
+              className="lg:hidden p-2 text-[color:var(--color-dark-brown)] hover:text-[color:var(--color-accent-brown)] transition-colors"
+              aria-label="Toggle menu"
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+          </SheetTrigger>
+          <SheetContent 
+            side="right" 
+            className="w-[280px] sm:w-[320px] bg-[color:var(--color-cream)] border-l border-[color:var(--color-border)]"
+          >
+            <div className="flex flex-col h-full">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-8">
+                <img
+                  src={logo}
+                  alt="Sachida Artistry"
+                  className="h-12 w-auto object-contain"
+                />
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="flex flex-col gap-1">
+                {items.map(([num, label, href]) => (
+                  <button
+                    key={href}
+                    onClick={() => handleNavClick(href)}
+                    className="text-left py-4 px-4 rounded-sm hover:bg-[color:var(--color-cream-2)] transition-colors group"
+                  >
+                    <div className="flex items-center gap-4">
+                      <span className="text-[color:var(--color-rose-gold)] font-[family-name:var(--font-display)] text-lg">
+                        {num}
+                      </span>
+                      <span className="text-[color:var(--color-dark-brown)] tracking-[0.18em] uppercase text-[13px] group-hover:text-[color:var(--color-accent-brown)] transition-colors">
+                        {label}
+                      </span>
+                    </div>
+                  </button>
+                ))}
+              </nav>
+
+              {/* Footer - Social Links */}
+              <div className="mt-auto pt-8 border-t border-[color:var(--color-border)]">
+                <div className="space-y-3">
+                  <a
+                    href="https://www.instagram.com/sachidaartistry/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-sm text-[color:var(--color-accent-brown)] hover:text-[color:var(--color-dark-brown)] transition-colors"
+                  >
+                    @sachidaartistry
+                  </a>
+                  <a
+                    href="https://wa.me/919541887431"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-sm text-[color:var(--color-accent-brown)] hover:text-[color:var(--color-dark-brown)] transition-colors"
+                  >
+                    +91 95418 87431
+                  </a>
+                </div>
+              </div>
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   );
@@ -236,7 +329,7 @@ function Cover() {
 
             {/* Sub-tagline */}
             <p className="tracking-[0.32em] uppercase text-[12px] lg:text-[13px] text-[color:var(--color-accent-brown)] font-medium">
-              Full Time Artist &amp; Part Time Doctor
+              Preserving Moments in Resin
             </p>
 
             {/* Description quote */}
@@ -267,16 +360,15 @@ function Cover() {
       <div className="md:hidden flex flex-col w-full">
         {/* Arch image container showing the right portion of the heroBg */}
         <div
-          className="w-full h-[320px] sm:h-[380px] bg-cover bg-no-repeat bg-[position:82%_center]"
+          className="w-full h-[280px] sm:h-[340px] bg-cover bg-no-repeat bg-[position:82%_center]"
           style={{ backgroundImage: `url(${heroBg})` }}
         />
 
         {/* Content container stacked below */}
-        <div className="px-6 py-10 bg-[color:var(--color-cream)] border-t border-[color:var(--color-border)]">
-          <Reveal className="flex flex-col gap-4">
+        <div className="px-5 sm:px-6 py-8 sm:py-10 bg-[color:var(--color-cream)] border-t border-[color:var(--color-border)]">
+          <Reveal className="flex flex-col gap-3 sm:gap-4">
 
-
-            <h1 className="font-[family-name:var(--font-display)] text-5xl text-[color:var(--color-dark-brown)] leading-none uppercase">
+            <h1 className="font-[family-name:var(--font-display)] text-[2.75rem] sm:text-5xl text-[color:var(--color-dark-brown)] leading-[0.95] uppercase">
               P
               <span className="relative inline-block">
                 O
@@ -286,7 +378,7 @@ function Cover() {
             </h1>
 
             {/* Ornament Line */}
-            <div className="relative my-2 flex items-center gap-3 max-w-[280px]">
+            <div className="relative my-1 sm:my-2 flex items-center gap-2 sm:gap-3 max-w-[280px]">
               <div className="h-px flex-1 bg-[color:var(--color-rose-gold)]/45" />
               <svg width="24" height="12" viewBox="0 0 24 12" className="text-[color:var(--color-rose-gold)] shrink-0">
                 <path d="M12 2 L17 6 L12 10 L7 6 Z" fill="none" stroke="currentColor" strokeWidth="0.8" />
@@ -294,23 +386,23 @@ function Cover() {
                 <line x1="18" y1="6" x2="24" y2="6" stroke="currentColor" strokeWidth="0.8" />
               </svg>
               <div className="h-px flex-1 bg-[color:var(--color-rose-gold)]/45" />
-              <span className="h-1.2 w-1.2 rounded-full bg-red-700 shrink-0" />
+              <span className="h-1.5 w-1.5 rounded-full bg-red-700 shrink-0" />
             </div>
 
-            <p className="tracking-[0.24em] uppercase text-[10px] text-[color:var(--color-accent-brown)] font-medium">
-              Resin Artist
+            <p className="tracking-[0.20em] sm:tracking-[0.24em] uppercase text-[10px] sm:text-[11px] text-[color:var(--color-accent-brown)] font-medium">
+              Full Time Artist &amp; Part Time Doctor
             </p>
 
-            <blockquote className="border-l border-[color:var(--color-rose-gold)] pl-4 my-2">
-              <p className="text-[14px] leading-[1.7] font-light text-[color:var(--color-chocolate)]">
+            <blockquote className="border-l-2 border-[color:var(--color-rose-gold)] pl-3 sm:pl-4 my-1 sm:my-2">
+              <p className="text-[13.5px] sm:text-[14px] leading-[1.65] sm:leading-[1.7] font-light text-[color:var(--color-chocolate)]">
                 I create timeless resin art and customized gifts that preserve
                 your special moments with elegance and creativity.
               </p>
             </blockquote>
 
-            <div className="mt-2">
-              <p className="script text-4xl text-[color:var(--color-accent-brown)]">Sachida Sharma</p>
-              <p className="mt-1 tracking-[0.24em] uppercase text-[9px] text-[color:var(--color-accent-brown)] font-semibold">
+            <div className="mt-1 sm:mt-2">
+              <p className="script text-[2.25rem] sm:text-4xl text-[color:var(--color-accent-brown)]">Sachida Sharma</p>
+              <p className="mt-1 tracking-[0.20em] sm:tracking-[0.24em] uppercase text-[9px] sm:text-[10px] text-[color:var(--color-accent-brown)] font-semibold">
                 Founder of Sachida Artistry
               </p>
             </div>
@@ -318,7 +410,7 @@ function Cover() {
         </div>
 
         {/* Bottom dark bar */}
-        <div className="w-full bg-[color:var(--color-chocolate)] py-3 text-center text-[10px] tracking-[0.3em] uppercase text-[color:var(--color-rose-gold)]">
+        <div className="w-full bg-[color:var(--color-chocolate)] py-2.5 sm:py-3 text-center text-[9px] sm:text-[10px] tracking-[0.26em] sm:tracking-[0.3em] uppercase text-[color:var(--color-rose-gold)]">
           ✦  Handcrafted with Love  ✦
         </div>
       </div>
@@ -364,14 +456,14 @@ function Botanicals({ className = "" }: { className?: string }) {
 function About() {
   return (
     <section id="about" className="bg-[color:var(--color-cream-2)]">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-24 md:py-32">
-        <div className="grid grid-cols-12 gap-10 items-center">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-12 py-16 sm:py-20 md:py-24 lg:py-32">
+        <div className="grid grid-cols-12 gap-8 md:gap-10 items-center">
           <Reveal className="col-span-12 md:col-span-5">
-            <div className="relative">
-              <div className="absolute -inset-4 border border-[color:var(--color-rose-gold)]/40" />
+            <div className="relative max-w-sm mx-auto md:max-w-none">
+              <div className="absolute -inset-3 sm:-inset-4 border border-[color:var(--color-rose-gold)]/40" />
               <div className="relative overflow-hidden aspect-[4/5]">
                 <img
-                  src={portraitAbout}
+                  src={contactImage}
                   alt="Sachida in her studio"
                   width={1024}
                   height={1280}
@@ -384,29 +476,29 @@ function About() {
 
           <Reveal delay={150} className="col-span-12 md:col-span-7 md:pl-10">
             <Eyebrow>About the Artist</Eyebrow>
-            <h2 className="mt-6 text-5xl md:text-6xl text-[color:var(--color-dark-brown)] leading-[1.05]">
-              Hi, I&rsquo;m <span className="script text-[color:var(--color-accent-brown)] text-6xl md:text-7xl">Sachida</span>
+            <h2 className="mt-4 sm:mt-6 text-4xl sm:text-5xl md:text-6xl text-[color:var(--color-dark-brown)] leading-[1.05]">
+              Hi, I&rsquo;m <span className="script text-[color:var(--color-accent-brown)] text-[2.75rem] sm:text-6xl md:text-7xl">Sachida</span>
             </h2>
-            <p className="mt-8 max-w-xl text-[15px] leading-8 font-light text-[color:var(--color-chocolate)]">
+            <p className="mt-6 sm:mt-8 max-w-xl text-[14px] sm:text-[15px] leading-[1.75] sm:leading-8 font-light text-[color:var(--color-chocolate)]">
               I&rsquo;m Sachida Sharma — a doctor by profession and an artist by heart.
               My journey as an artist began in 2020 during the COVID lockdown, when I
               discovered a creative side of myself I had never explored before. What
               started as curiosity soon turned into passion. Like every creative journey,
               mine was filled with experiments, challenges, and countless learning experiences.
             </p>
-            <p className="mt-6 max-w-xl text-[15px] leading-8 font-light text-[color:var(--color-chocolate)]">
+            <p className="mt-4 sm:mt-6 max-w-xl text-[14px] sm:text-[15px] leading-[1.75] sm:leading-8 font-light text-[color:var(--color-chocolate)]">
               I explored different art forms before discovering resin art — the medium
               that truly felt like home. I began by creating resin photo frames, and as my
               skills evolved, I introduced engagement platters, which soon became my
               signature and best-selling creations.
             </p>
-            <p className="mt-6 max-w-xl text-[15px] leading-8 font-light text-[color:var(--color-chocolate)]">
+            <p className="mt-4 sm:mt-6 max-w-xl text-[14px] sm:text-[15px] leading-[1.75] sm:leading-8 font-light text-[color:var(--color-chocolate)]">
               Today, my work also includes varmala preservation, wedding cards, customized
               gifts and other keepsake pieces that transform precious moments into
               timeless memories.
             </p>
 
-            <div className="mt-12 flex items-end gap-8">
+            <div className="mt-8 sm:mt-12 flex items-end gap-8">
               <div>
 
               </div>
@@ -434,7 +526,7 @@ const journey = [
 function Journey() {
   return (
     <section id="journey" className="bg-[color:var(--color-cream)]">
-      <div className="mx-auto max-w-[1200px] px-6 md:px-12 py-24 md:py-32">
+      <div className="mx-auto max-w-[1200px] px-5 sm:px-6 md:px-12 py-16 sm:py-20 md:py-24 lg:py-32">
         <SectionHeader n="03" eyebrow="My Journey" title="A quiet, unfolding timeline" />
 
         {/* Desktop Layout (md and up) */}
@@ -508,21 +600,21 @@ function Journey() {
         </div>
 
         {/* Mobile Layout (below md) */}
-        <div className="md:hidden relative mt-12 pl-6">
+        <div className="md:hidden relative mt-8 sm:mt-12 pl-5 sm:pl-6">
           {/* Vertical timeline line on the left */}
           <div className="absolute left-1.5 top-2 bottom-2 w-px bg-[color:var(--color-rose-gold)]/40" />
 
-          <ul className="space-y-16">
+          <ul className="space-y-12 sm:space-y-16">
             {journey.map(([year, title, text, img]) => (
-              <li key={year} className="relative flex flex-col gap-3">
+              <li key={year} className="relative flex flex-col gap-2 sm:gap-3">
                 {/* Timeline dot */}
                 <span className="absolute -left-[22px] top-2.5 h-2.5 w-2.5 rounded-full bg-[color:var(--color-rose-gold)] ring-4 ring-[color:var(--color-cream)]" />
 
                 <Reveal className="flex flex-col gap-1">
-                  <div className="font-[family-name:var(--font-display)] text-3xl text-[color:var(--color-dark-brown)] leading-none">
+                  <div className="font-[family-name:var(--font-display)] text-[2rem] sm:text-3xl text-[color:var(--color-dark-brown)] leading-none">
                     {year}
                   </div>
-                  <div className="tracking-[0.24em] uppercase text-[10px] text-[color:var(--color-accent-brown)] mt-1">
+                  <div className="tracking-[0.20em] sm:tracking-[0.24em] uppercase text-[9px] sm:text-[10px] text-[color:var(--color-accent-brown)] mt-1">
                     {title}
                   </div>
                 </Reveal>
@@ -540,7 +632,7 @@ function Journey() {
                 </Reveal>
 
                 <Reveal delay={100} className="max-w-[340px]">
-                  <p className="text-[13px] leading-6 font-light text-[color:var(--color-chocolate)]">
+                  <p className="text-[12.5px] sm:text-[13px] leading-[1.6] sm:leading-6 font-light text-[color:var(--color-chocolate)]">
                     {text}
                   </p>
                 </Reveal>
@@ -1079,22 +1171,22 @@ function Gallery() {
 function Contact() {
   return (
     <section id="contact" className="bg-[color:var(--color-dark-brown)] text-[color:var(--color-cream)]">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-24 md:py-32">
-        <div className="grid grid-cols-12 gap-10 items-center">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-12 py-16 sm:py-20 md:py-24 lg:py-32">
+        <div className="grid grid-cols-12 gap-8 sm:gap-10 items-center">
 
           {/* Portrait */}
           <Reveal className="col-span-12 md:col-span-5">
-            <div className="relative">
-              <div className="absolute inset-x-6 top-0 h-[92%] rounded-t-full bg-[color:var(--color-chocolate)]" />
-              <div className="relative overflow-hidden rounded-t-full aspect-[3/4] mx-6">
+            <div className="relative max-w-sm mx-auto md:max-w-none">
+              <div className="absolute inset-x-4 sm:inset-x-6 top-0 h-[92%] rounded-t-full bg-[color:var(--color-chocolate)]" />
+              <div className="relative overflow-hidden rounded-t-full aspect-[3/4] mx-4 sm:mx-6">
                 <img
-                  src={contactImage}
+                  src={portraitAbout}
                   alt="Sachida Sharma"
                   loading="lazy"
                   className="h-full w-full object-cover"
                 />
               </div>
-              <p className="script text-5xl text-[color:var(--color-rose-gold)] absolute bottom-4 left-4">
+              <p className="script text-3xl sm:text-4xl md:text-5xl text-[color:var(--color-rose-gold)] absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
                 Let&rsquo;s Connect
               </p>
             </div>
@@ -1102,52 +1194,68 @@ function Contact() {
 
           {/* Right side content */}
           <Reveal delay={150} className="col-span-12 md:col-span-7 md:pl-6">
-            <div className="text-[color:var(--color-rose-gold)] tracking-eyebrow">— 15 —</div>
-            <h2 className="mt-4 text-5xl md:text-6xl font-[family-name:var(--font-display)] leading-[1.05]">
+            <div className="text-[color:var(--color-rose-gold)] tracking-eyebrow text-center md:text-left">— 15 —</div>
+            <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] leading-[1.15] sm:leading-[1.1] md:leading-[1.05] text-center md:text-left">
               Let&rsquo;s create something <span className="script text-[color:var(--color-rose-gold)]">beautiful</span>
             </h2>
-            <p className="mt-6 max-w-lg text-[15px] leading-8 font-light text-[color:var(--color-cream)]/85">
+            <p className="mt-5 sm:mt-6 max-w-lg mx-auto md:mx-0 text-[13.5px] sm:text-[14px] md:text-[15px] leading-[1.7] sm:leading-[1.75] md:leading-8 font-light text-[color:var(--color-cream)]/85 text-center md:text-left">
               I&rsquo;d love to craft something meaningful for you. Tell me about
               the moment you&rsquo;d like to preserve — a wedding, an engagement,
               a name, a first — and we will take it slowly from there.
             </p>
 
-            {/* Details + QR side by side */}
-            <div className="mt-10 flex flex-col sm:flex-row gap-10 items-start">
+            {/* Contact Details */}
+            <dl className="mt-8 sm:mt-10 flex flex-col gap-5 sm:gap-6 max-w-md mx-auto md:mx-0">
+              <div className="border-t border-[color:var(--color-rose-gold)]/40 pt-3 sm:pt-4 text-center md:text-left">
+                <dt className="tracking-eyebrow text-[color:var(--color-rose-gold)] text-[10px] sm:text-[11px]">Instagram</dt>
+                <dd className="mt-1.5 sm:mt-2 font-[family-name:var(--font-display)] text-lg sm:text-xl">
+                  <a 
+                    href="https://www.instagram.com/sachidaartistry/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[color:var(--color-rose-gold)] transition-colors"
+                  >
+                    @sachidaartistry
+                  </a>
+                </dd>
+              </div>
+              <div className="border-t border-[color:var(--color-rose-gold)]/40 pt-3 sm:pt-4 text-center md:text-left">
+                <dt className="tracking-eyebrow text-[color:var(--color-rose-gold)] text-[10px] sm:text-[11px]">Phone</dt>
+                <dd className="mt-1.5 sm:mt-2 font-[family-name:var(--font-display)] text-lg sm:text-xl">
+                  <a 
+                    href="https://wa.me/919541887431"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[color:var(--color-rose-gold)] transition-colors"
+                  >
+                    +91 95418 87431
+                  </a>
+                </dd>
+              </div>
+              <div className="border-t border-[color:var(--color-rose-gold)]/40 pt-3 sm:pt-4 text-center md:text-left">
+                <dt className="tracking-eyebrow text-[color:var(--color-rose-gold)] text-[10px] sm:text-[11px]">Location</dt>
+                <dd className="mt-1.5 sm:mt-2 font-[family-name:var(--font-display)] text-base sm:text-lg leading-relaxed">
+                  📍 Jammu<br />🚚 Shipping Pan India
+                </dd>
+              </div>
+            </dl>
 
-              {/* Left: contact details */}
-              <dl className="flex flex-col gap-6 flex-1">
-                <div className="border-t border-[color:var(--color-rose-gold)]/40 pt-4">
-                  <dt className="tracking-eyebrow text-[color:var(--color-rose-gold)]">Instagram</dt>
-                  <dd className="mt-2 font-[family-name:var(--font-display)] text-xl">@sachidaartistry</dd>
-                </div>
-                <div className="border-t border-[color:var(--color-rose-gold)]/40 pt-4">
-                  <dt className="tracking-eyebrow text-[color:var(--color-rose-gold)]">Phone</dt>
-                  <dd className="mt-2 font-[family-name:var(--font-display)] text-xl">+91 95418 87431</dd>
-                </div>
-                <div className="border-t border-[color:var(--color-rose-gold)]/40 pt-4">
-                  <dt className="tracking-eyebrow text-[color:var(--color-rose-gold)]">Location</dt>
-                  <dd className="mt-2 font-[family-name:var(--font-display)] text-lg leading-relaxed">
-                    📍 Jammu<br />🚚 Shipping Pan India
-                  </dd>
-                </div>
-              </dl>
-
-              {/* Right: QR box */}
-              <div className="border border-[color:var(--color-rose-gold)]/40 p-5 flex flex-col items-center gap-4 shrink-0 w-48 sm:w-52">
+            {/* QR Code - Centered on mobile */}
+            <div className="mt-8 sm:mt-10 flex justify-center md:justify-start">
+              <div className="border border-[color:var(--color-rose-gold)]/40 p-4 sm:p-5 flex flex-col items-center gap-3 sm:gap-4 w-48 sm:w-52">
                 <img
                   src={instaQr}
                   alt="Instagram QR code"
                   className="w-36 h-36 sm:w-40 sm:h-40 object-cover"
                 />
                 <div className="text-center">
-                  <p className="tracking-eyebrow text-[color:var(--color-rose-gold)] text-[10px]">Follow on Instagram</p>
-                  <p className="mt-1 font-[family-name:var(--font-display)] text-lg text-[color:var(--color-cream)]">@sachidaartistry</p>
-                  <p className="mt-1 text-[11px] font-light text-[color:var(--color-cream)]/60">Scan to follow ✦</p>
+                  <p className="tracking-eyebrow text-[color:var(--color-rose-gold)] text-[9px] sm:text-[10px]">Follow on Instagram</p>
+                  <p className="mt-1 font-[family-name:var(--font-display)] text-base sm:text-lg text-[color:var(--color-cream)]">@sachidaartistry</p>
+                  <p className="mt-1 text-[10px] sm:text-[11px] font-light text-[color:var(--color-cream)]/60">Scan to follow ✦</p>
                 </div>
               </div>
-
             </div>
+
           </Reveal>
 
         </div>
@@ -1161,14 +1269,15 @@ function Contact() {
 function Footer() {
   return (
     <footer className="bg-[color:var(--color-chocolate)] text-[color:var(--color-cream)]/80 border-t border-[color:var(--color-rose-gold)]/30">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 tracking-eyebrow text-[color:var(--color-rose-gold)]">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 md:px-12 py-5 sm:py-6 flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-2 text-[10px] sm:text-[11px] tracking-[0.24em] sm:tracking-eyebrow text-[color:var(--color-rose-gold)]">
         <span>📍 Jammu</span>
         <span className="opacity-60">✦</span>
-        <span>🚚 Shipping Pan India</span>
+        <span>🚚 Pan India</span>
         <span className="opacity-60">✦</span>
-        <span>@sachidaartistry</span>
-        <span className="opacity-60">✦</span>
-        <span>Est. 2020</span>
+        <span className="hidden sm:inline">@sachidaartistry</span>
+        <span className="sm:hidden">Est. 2020</span>
+        <span className="hidden sm:inline opacity-60">✦</span>
+        <span className="hidden sm:inline">Est. 2020</span>
       </div>
     </footer>
   );
