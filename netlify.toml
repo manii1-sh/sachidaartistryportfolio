@@ -6,6 +6,18 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Serve static assets directly — must come BEFORE the SSR catch-all
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/favicon.ico"
+  status = 200
+
+# All other requests go to the SSR function
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/server"
