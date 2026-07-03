@@ -390,7 +390,7 @@ function Cover() {
             </div>
 
             <p className="tracking-[0.20em] sm:tracking-[0.24em] uppercase text-[10px] sm:text-[11px] text-[color:var(--color-accent-brown)] font-medium">
-              Full Time Artist &amp; Part Time Doctor
+              Preserving Moments in Resin
             </p>
 
             <blockquote className="border-l-2 border-[color:var(--color-rose-gold)] pl-3 sm:pl-4 my-1 sm:my-2">
