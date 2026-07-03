@@ -6,17 +6,11 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { HeroDesktop } from "@/components/sections/Hero/HeroDesktop";
-import { HeroMobile } from "@/components/sections/Hero/HeroMobile";
-import { AboutDesktop } from "@/components/sections/About/AboutDesktop";
-import { AboutMobile } from "@/components/sections/About/AboutMobile";
-import { ContactDesktop } from "@/components/sections/Contact/ContactDesktop";
-import { ContactMobile } from "@/components/sections/Contact/ContactMobile";
-import { VarmalaPreservationDesktop } from "@/components/sections/VarmalaPreservation/VarmalaPreservationDesktop";
-import { VarmalaPreservationMobile } from "@/components/sections/VarmalaPreservation/VarmalaPreservationMobile";
-import { HomeDecorClocksDesktop } from "@/components/sections/HomeDecorClocks/HomeDecorClocksDesktop";
-import { HomeDecorClocksMobile } from "@/components/sections/HomeDecorClocks/HomeDecorClocksMobile";
+import { Hero as HeroSection } from "@/components/sections/Hero/Hero";
+import { About as AboutSection } from "@/components/sections/About/About";
+import { Contact as ContactSection } from "@/components/sections/Contact/Contact";
+import { VarmalaPreservation as VarmalaPreservationSection } from "@/components/sections/VarmalaPreservation/VarmalaPreservation";
+import { HomeDecorClocks as HomeDecorClocksSection } from "@/components/sections/HomeDecorClocks/HomeDecorClocks";
 
 import logo from "@/assets/logo.png";
 import aboutTheArt from "@/assets/abouttheart.jpeg";
@@ -291,28 +285,22 @@ function Nav() {
 /* ─────────── 01 cover ─────────── */
 
 function Cover() {
-  const isMobile = useIsMobile();
-  
   return (
     <section
       id="top"
       className="relative flex flex-col bg-[color:var(--color-cream)] overflow-hidden"
     >
-      {isMobile ? <HeroMobile /> : <HeroDesktop />}
+      <HeroSection />
     </section>
   );
 }
 
-
-
 /* ─────────── 02 about ─────────── */
 
 function About() {
-  const isMobile = useIsMobile();
-  
   return (
     <section id="about" className="bg-[color:var(--color-cream-2)]">
-      {isMobile ? <AboutMobile /> : <AboutDesktop />}
+      <AboutSection />
     </section>
   );
 }
@@ -572,7 +560,7 @@ function WhyHandmade() {
           <Reveal className="col-span-12 md:col-span-5">
             <PageNumber n="06" />
             <Eyebrow>Why Handmade</Eyebrow>
-            <h2 className="mt-6 text-5xl md:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.05]">
+            <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.1] sm:leading-[1.05]">
               Even when I create the <span className="script text-[color:var(--color-accent-brown)]">same design</span>, no two pieces are ever alike.
             </h2>
             <p className="mt-8 text-[15px] leading-8 font-light text-[color:var(--color-chocolate)] max-w-md">
@@ -585,14 +573,14 @@ function WhyHandmade() {
           <Reveal delay={150} className="col-span-12 md:col-span-7 md:pl-10">
             <ul className="divide-y divide-[color:var(--color-border)] border-y border-[color:var(--color-border)]">
               {values.map(([t, d], i) => (
-                <li key={t} className="grid grid-cols-12 items-baseline gap-6 py-7">
-                  <div className="col-span-2 font-[family-name:var(--font-display)] text-2xl text-[color:var(--color-rose-gold)]">
+                <li key={t} className="flex flex-col sm:grid sm:grid-cols-12 items-start sm:items-baseline gap-2 sm:gap-6 py-5 sm:py-7">
+                  <div className="sm:col-span-2 font-[family-name:var(--font-display)] text-2xl text-[color:var(--color-rose-gold)]">
                     0{i + 1}
                   </div>
-                  <div className="col-span-4 font-[family-name:var(--font-display)] text-xl text-[color:var(--color-dark-brown)]">
+                  <div className="sm:col-span-4 font-[family-name:var(--font-display)] text-xl text-[color:var(--color-dark-brown)]">
                     {t}
                   </div>
-                  <p className="col-span-6 text-[14px] leading-7 font-light text-[color:var(--color-chocolate)]">
+                  <p className="sm:col-span-6 text-[14px] leading-7 font-light text-[color:var(--color-chocolate)]">
                     {d}
                   </p>
                 </li>
@@ -623,7 +611,7 @@ function Signature() {
           <Reveal delay={150} className="col-span-12 md:col-span-6 md:pl-6">
             <PageNumber n="07" />
             <Eyebrow>Signature Collection</Eyebrow>
-            <h2 className="mt-6 text-5xl md:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.05]">
+            <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.1] sm:leading-[1.05]">
               The <span className="script text-[color:var(--color-accent-brown)]">Engagement Platter</span>
             </h2>
             <p className="mt-8 text-[15px] leading-8 font-light text-[color:var(--color-chocolate)] max-w-md">
@@ -642,11 +630,9 @@ function Signature() {
 /* ─────────── 08 varmala preservation ─────────── */
 
 function VarmalaPreservation() {
-  const isMobile = useIsMobile();
-  
   return (
     <section className="bg-[color:var(--color-cream)]">
-      {isMobile ? <VarmalaPreservationMobile /> : <VarmalaPreservationDesktop />}
+      <VarmalaPreservationSection />
     </section>
   );
 }
@@ -669,7 +655,7 @@ function WeddingCards() {
           <Reveal delay={150} className="col-span-12 md:col-span-6 md:pl-6 flex flex-col justify-start">
             <PageNumber n="09" />
             <Eyebrow>Stationery Collection</Eyebrow>
-            <h2 className="mt-6 text-5xl md:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.05]">
+            <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.1] sm:leading-[1.05]">
               Wedding <span className="script text-[color:var(--color-accent-brown)]">Cards</span>
             </h2>
             <p className="mt-8 text-[15px] leading-8 font-light text-[color:var(--color-chocolate)] max-w-md">
@@ -687,11 +673,9 @@ function WeddingCards() {
 /* ─────────── 10 home decor clocks ─────────── */
 
 function HomeDecorClocks() {
-  const isMobile = useIsMobile();
-  
   return (
     <section className="bg-[color:var(--color-cream)]">
-      {isMobile ? <HomeDecorClocksMobile /> : <HomeDecorClocksDesktop />}
+      <HomeDecorClocksSection />
     </section>
   );
 }
@@ -724,7 +708,7 @@ function BulkOrders() {
           <Reveal delay={150} className="col-span-12 md:col-span-5 md:pl-4 flex flex-col justify-center">
             <PageNumber n="11" />
             <Eyebrow>Bulk & Wedding Orders</Eyebrow>
-            <h2 className="mt-6 text-5xl md:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.05]">
+            <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.1] sm:leading-[1.05]">
               We accept <span className="script text-[color:var(--color-accent-brown)]">bulk orders</span>
             </h2>
             <p className="mt-6 text-[15px] leading-8 font-light text-[color:var(--color-chocolate)] max-w-md">
@@ -927,11 +911,9 @@ function Gallery() {
 /* ─────────── 15 contact ─────────── */
 
 function Contact() {
-  const isMobile = useIsMobile();
-  
   return (
     <section id="contact" className="bg-[color:var(--color-dark-brown)] text-[color:var(--color-cream)]">
-      {isMobile ? <ContactMobile /> : <ContactDesktop />}
+      <ContactSection />
     </section>
   );
 }
