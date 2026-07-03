@@ -1,23 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { HeroDesktop } from "@/components/sections/Hero/HeroDesktop";
+import { HeroMobile } from "@/components/sections/Hero/HeroMobile";
+import { AboutDesktop } from "@/components/sections/About/AboutDesktop";
+import { AboutMobile } from "@/components/sections/About/AboutMobile";
+import { ContactDesktop } from "@/components/sections/Contact/ContactDesktop";
+import { ContactMobile } from "@/components/sections/Contact/ContactMobile";
+import { VarmalaPreservationDesktop } from "@/components/sections/VarmalaPreservation/VarmalaPreservationDesktop";
+import { VarmalaPreservationMobile } from "@/components/sections/VarmalaPreservation/VarmalaPreservationMobile";
+import { HomeDecorClocksDesktop } from "@/components/sections/HomeDecorClocks/HomeDecorClocksDesktop";
+import { HomeDecorClocksMobile } from "@/components/sections/HomeDecorClocks/HomeDecorClocksMobile";
 
-import portraitHero from "@/assets/dc30023a-9d90-43ac-a980-590523d4679d.png";
-import heroBg from "@/assets/hero-bg.png";
-import portraitAbout from "@/assets/portrait-about.png";
-import engagementPlatter from "@/assets/engagementplatter1.jpeg";
-import resinFrame from "@/assets/section4(3).jpeg";
-import trousseau from "@/assets/section4(5).jpeg";
-import weddingCards from "@/assets/Weddingcard1.jpeg";
-import returnGifts from "@/assets/Journey1.jpeg";
-import processImg from "@/assets/process.jpg";
-import homeDecorClock from "@/assets/section10.jpeg";
-import nameplate from "@/assets/sectiion4(1).jpeg";
 import logo from "@/assets/logo.png";
 import aboutTheArt from "@/assets/abouttheart.jpeg";
 import engagementPlatter1 from "@/assets/engagementplatter1.jpeg";
@@ -33,8 +33,8 @@ import sec4_1 from "@/assets/sectiion4(1).jpeg";
 import sec4_2 from "@/assets/section4(2).jpeg";
 import sec4_3 from "@/assets/section4(3).jpeg";
 import sec4_5 from "@/assets/section4(5).jpeg";
-import varmalaPreservation from "@/assets/varnmalapreservation.png";
-import section10Img from "@/assets/section10.jpeg";
+import homeDecorClock from "@/assets/section10.jpeg";
+import weddingCards from "@/assets/Weddingcard1.jpeg";
 import sec14 from "@/assets/section14.jpeg";
 import sec14_2 from "@/assets/section14 (2).jpeg";
 import weddingCardMain from "@/assets/weddingcardmain.jpeg";
@@ -46,7 +46,7 @@ import whatsapp1 from "@/assets/WhatsApp Image 2026-07-02 at 11.20.16 (2).jpeg";
 import sec14_3 from "@/assets/section14 (3).jpeg";
 import sec14_4 from "@/assets/section14 (4).jpeg";
 import bulkOrderImg from "@/assets/bulkorder.png";
-import contactImage from "@/assets/contactimage.jpeg";
+import processImg from "@/assets/process.jpg";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -291,223 +291,28 @@ function Nav() {
 /* ─────────── 01 cover ─────────── */
 
 function Cover() {
+  const isMobile = useIsMobile();
+  
   return (
     <section
       id="top"
       className="relative flex flex-col bg-[color:var(--color-cream)] overflow-hidden"
     >
-      {/* Desktop Layout (md and up) */}
-      <div
-        className="hidden md:flex flex-col justify-between relative w-full h-[calc(100vh-80px)] min-h-[640px] bg-cover bg-no-repeat bg-[position:right_center]"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      >
-        {/* Main area */}
-        <div className="mx-auto w-full max-w-[1400px] px-8 md:px-14 flex-1 flex flex-col justify-center pt-24 pb-8">
-          <Reveal className="w-full max-w-[580px] lg:max-w-[660px] z-10 flex flex-col items-start">
-            {/* Title: PORTFOLIO with star inside first O */}
-            <h1 className="font-[family-name:var(--font-display)] font-semibold text-7xl lg:text-[110px] xl:text-[124px] text-[color:var(--color-dark-brown)] leading-[0.88] tracking-[-0.04em] select-none uppercase w-full">
-              P
-              <span className="relative inline-block">
-                O
-                <span className="absolute inset-0 flex items-center justify-center text-[0.55em] text-[color:var(--color-rose-gold)] translate-y-[-4%] font-normal">✦</span>
-              </span>
-              RTFOLIO
-            </h1>
-
-            {/* Ornament Line */}
-            <div className="relative my-5 flex items-center gap-2 w-full">
-              <div className="h-px bg-[color:var(--color-rose-gold)]/45 w-4" />
-              <div className="h-px flex-1 bg-[color:var(--color-rose-gold)]/45" />
-              <svg width="28" height="12" viewBox="0 0 28 12" className="text-[color:var(--color-rose-gold)] shrink-0">
-                <path d="M14 2 L19 6 L14 10 L9 6 Z" fill="none" stroke="currentColor" strokeWidth="0.8" />
-                <line x1="0" y1="6" x2="8" y2="6" stroke="currentColor" strokeWidth="0.8" />
-                <line x1="20" y1="6" x2="28" y2="6" stroke="currentColor" strokeWidth="0.8" />
-              </svg>
-              <div className="h-px flex-1 bg-[color:var(--color-rose-gold)]/45" />
-              <span className="h-1.5 w-1.5 rounded-full bg-[#D02323] shrink-0 ml-1" />
-            </div>
-
-            {/* Sub-tagline */}
-            <p className="tracking-[0.28em] text-[12px] lg:text-[13px] text-[color:var(--color-accent-brown)] font-medium leading-relaxed">
-              Preserving memories through art.<br />Self taught resin artist
-            </p>
-
-            {/* Description quote */}
-            <blockquote className="mt-6 border-l border-[color:var(--color-rose-gold)] pl-6 py-1 max-w-[460px] text-left">
-              <p className="text-[15px] lg:text-[16px] leading-[1.85] font-light text-[color:var(--color-chocolate)]">
-                I create timeless resin art and customized gifts that preserve
-                your special moments with elegance and creativity.
-              </p>
-            </blockquote>
-
-            {/* Signature */}
-            <div className="mt-8 text-left">
-              <p className="script text-5xl lg:text-6xl text-[color:var(--color-accent-brown)]">Sachida Sharma</p>
-              <p className="mt-2 tracking-[0.28em] uppercase text-[10px] lg:text-[11px] text-[color:var(--color-accent-brown)] font-semibold">
-                Founder of Sachida Artistry
-              </p>
-            </div>
-          </Reveal>
-        </div>
-
-        {/* Bottom dark bar */}
-        <div className="w-full bg-[color:var(--color-chocolate)] py-3 text-center text-[10px] md:text-[11px] tracking-[0.36em] uppercase text-[color:var(--color-rose-gold)]">
-          ✦  Handcrafted with Love  ✦
-        </div>
-      </div>
-
-      {/* Mobile Layout (below md) */}
-      <div className="md:hidden flex flex-col w-full">
-        {/* Arch image container showing the right portion of the heroBg */}
-        <div
-          className="w-full h-[280px] sm:h-[340px] bg-cover bg-no-repeat bg-[position:82%_center]"
-          style={{ backgroundImage: `url(${heroBg})` }}
-        />
-
-        {/* Content container stacked below */}
-        <div className="px-5 sm:px-6 py-8 sm:py-10 bg-[color:var(--color-cream)] border-t border-[color:var(--color-border)]">
-          <Reveal className="flex flex-col gap-3 sm:gap-4">
-
-            <h1 className="font-[family-name:var(--font-display)] text-[2.75rem] sm:text-5xl text-[color:var(--color-dark-brown)] leading-[0.95] uppercase">
-              P
-              <span className="relative inline-block">
-                O
-                <span className="absolute inset-0 flex items-center justify-center text-[0.45em] text-[color:var(--color-rose-gold)] translate-y-[-2%]">✦</span>
-              </span>
-              RTFOLIO
-            </h1>
-
-            {/* Ornament Line */}
-            <div className="relative my-1 sm:my-2 flex items-center gap-2 sm:gap-3 max-w-[280px]">
-              <div className="h-px flex-1 bg-[color:var(--color-rose-gold)]/45" />
-              <svg width="24" height="12" viewBox="0 0 24 12" className="text-[color:var(--color-rose-gold)] shrink-0">
-                <path d="M12 2 L17 6 L12 10 L7 6 Z" fill="none" stroke="currentColor" strokeWidth="0.8" />
-                <line x1="0" y1="6" x2="6" y2="6" stroke="currentColor" strokeWidth="0.8" />
-                <line x1="18" y1="6" x2="24" y2="6" stroke="currentColor" strokeWidth="0.8" />
-              </svg>
-              <div className="h-px flex-1 bg-[color:var(--color-rose-gold)]/45" />
-              <span className="h-1.5 w-1.5 rounded-full bg-red-700 shrink-0" />
-            </div>
-
-            <p className="tracking-[0.20em] sm:tracking-[0.24em] uppercase text-[10px] sm:text-[11px] text-[color:var(--color-accent-brown)] font-medium">
-              Preserving memories through art.
-              Self taught resin artist
-            </p>
-
-            <blockquote className="border-l-2 border-[color:var(--color-rose-gold)] pl-3 sm:pl-4 my-1 sm:my-2">
-              <p className="text-[13.5px] sm:text-[14px] leading-[1.65] sm:leading-[1.7] font-light text-[color:var(--color-chocolate)]">
-                I create timeless resin art and customized gifts that preserve
-                your special moments with elegance and creativity.
-              </p>
-            </blockquote>
-
-            <div className="mt-1 sm:mt-2">
-              <p className="script text-[2.25rem] sm:text-4xl text-[color:var(--color-accent-brown)]">Sachida Sharma</p>
-              <p className="mt-1 tracking-[0.20em] sm:tracking-[0.24em] uppercase text-[9px] sm:text-[10px] text-[color:var(--color-accent-brown)] font-semibold">
-                Founder of Sachida Artistry
-              </p>
-            </div>
-          </Reveal>
-        </div>
-
-        {/* Bottom dark bar */}
-        <div className="w-full bg-[color:var(--color-chocolate)] py-2.5 sm:py-3 text-center text-[9px] sm:text-[10px] tracking-[0.26em] sm:tracking-[0.3em] uppercase text-[color:var(--color-rose-gold)]">
-          ✦  Handcrafted with Love  ✦
-        </div>
-      </div>
+      {isMobile ? <HeroMobile /> : <HeroDesktop />}
     </section>
   );
 }
 
-function FloralRight({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 160 220" className={className} fill="none" stroke="currentColor" strokeWidth="0.8">
-      <path d="M80 210 C80 165, 95 130, 88 90 C83 55, 108 22, 98 6" />
-      <circle cx="98" cy="6" r="13" strokeWidth="0.7" />
-      <path d="M88 18 C68 36, 58 62, 73 78" />
-      <path d="M108 18 C128 36, 138 62, 123 78" />
-      <path d="M84 90 C62 105, 52 128, 67 143" />
-      <path d="M93 90 C115 105, 125 128, 110 143" />
-      <circle cx="67" cy="145" r="8" strokeWidth="0.7" />
-      <circle cx="112" cy="145" r="8" strokeWidth="0.7" />
-      <circle cx="73" cy="188" r="6" strokeWidth="0.7" />
-      <path d="M83 118 C58 108, 42 122, 52 138" />
-      <path d="M91 150 C118 143, 133 158, 122 174" />
-    </svg>
-  );
-}
 
-function Botanicals({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 100 200" className={className} fill="none" stroke="currentColor" strokeWidth="0.5">
-      <path d="M50 10 C 50 60, 30 110, 50 190" />
-      <path d="M50 40 C 70 45, 78 55, 82 70" />
-      <path d="M50 70 C 30 75, 22 85, 18 100" />
-      <path d="M50 105 C 72 112, 80 125, 84 140" />
-      <circle cx="82" cy="70" r="4" />
-      <circle cx="18" cy="100" r="4" />
-      <circle cx="84" cy="140" r="4" />
-      <circle cx="50" cy="190" r="3" />
-    </svg>
-  );
-}
 
 /* ─────────── 02 about ─────────── */
 
 function About() {
+  const isMobile = useIsMobile();
+  
   return (
     <section id="about" className="bg-[color:var(--color-cream-2)]">
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-12 py-16 sm:py-20 md:py-24 lg:py-32">
-        <div className="grid grid-cols-12 gap-8 md:gap-10 items-center">
-          <Reveal className="col-span-12 md:col-span-5 px-3 sm:px-4 md:px-0">
-            <div className="relative max-w-sm mx-auto md:max-w-none">
-              <div className="absolute -inset-3 sm:-inset-4 border border-[color:var(--color-rose-gold)]/40" />
-              <div className="relative overflow-hidden aspect-[4/5]">
-                <img
-                  src={contactImage}
-                  alt="Sachida in her studio"
-                  width={1024}
-                  height={1280}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={150} className="col-span-12 md:col-span-7 md:pl-10">
-            <Eyebrow>About the Artist</Eyebrow>
-            <h2 className="mt-4 sm:mt-6 text-4xl sm:text-5xl md:text-6xl text-[color:var(--color-dark-brown)] leading-[1.05]">
-              Hi, I&rsquo;m <span className="script text-[color:var(--color-accent-brown)] text-[2.75rem] sm:text-6xl md:text-7xl">Sachida</span>
-            </h2>
-            <p className="mt-6 sm:mt-8 max-w-xl text-[14px] sm:text-[15px] leading-[1.75] sm:leading-8 font-light text-[color:var(--color-chocolate)]">
-              I&rsquo;m Sachida Sharma — a doctor by profession and an artist by heart.
-              My journey as an artist began in 2020 during the COVID lockdown, when I
-              discovered a creative side of myself I had never explored before. What
-              started as curiosity soon turned into passion. Like every creative journey,
-              mine was filled with experiments, challenges, and countless learning experiences.
-            </p>
-            <p className="mt-4 sm:mt-6 max-w-xl text-[14px] sm:text-[15px] leading-[1.75] sm:leading-8 font-light text-[color:var(--color-chocolate)]">
-              I explored different art forms before discovering resin art — the medium
-              that truly felt like home. I began by creating resin photo frames, and as my
-              skills evolved, I introduced engagement platters, which soon became my
-              signature and best-selling creations.
-            </p>
-            <p className="mt-4 sm:mt-6 max-w-xl text-[14px] sm:text-[15px] leading-[1.75] sm:leading-8 font-light text-[color:var(--color-chocolate)]">
-              Today, my work also includes varmala preservation, wedding cards, customized
-              gifts and other keepsake pieces that transform precious moments into
-              timeless memories.
-            </p>
-
-            <div className="mt-8 sm:mt-12 flex items-end gap-8">
-              <div>
-
-              </div>
-              <div className="hidden md:block h-px flex-1 bg-[color:var(--color-rose-gold)]/60 mb-3" />
-            </div>
-          </Reveal>
-        </div>
-      </div>
+      {isMobile ? <AboutMobile /> : <AboutDesktop />}
     </section>
   );
 }
@@ -837,35 +642,11 @@ function Signature() {
 /* ─────────── 08 varmala preservation ─────────── */
 
 function VarmalaPreservation() {
+  const isMobile = useIsMobile();
+  
   return (
     <section className="bg-[color:var(--color-cream)]">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-24 md:py-32">
-        <div className="grid grid-cols-12 gap-10 items-start">
-          <Reveal className="col-span-12 md:col-span-6 md:pr-6 flex flex-col justify-start">
-            <PageNumber n="08" />
-            <Eyebrow>Heirloom Collection</Eyebrow>
-            <h2 className="mt-6 text-5xl md:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.05]">
-              Varmala <span className="script text-[color:var(--color-accent-brown)]">Preservation</span>
-            </h2>
-            <p className="mt-8 text-[15px] leading-8 font-light text-[color:var(--color-chocolate)] max-w-md">
-              Preserve the blooms from your special day forever. We take your wedding varmala,
-              dry the flowers with care to lock in their natural colors, and suspend them in
-              a custom, crystal-clear resin design to create a timeless keepsake.
-            </p>
-          </Reveal>
-          <Reveal delay={150} className="col-span-12 md:col-span-6 px-3 sm:px-4 md:px-0">
-            <div className="relative">
-              <div className="absolute -inset-3 border border-[color:var(--color-rose-gold)]/40" />
-              <img
-                src={varmalaPreservation}
-                alt="Varmala preservation resin art"
-                loading="lazy"
-                className="w-full aspect-[4/5] object-cover"
-              />
-            </div>
-          </Reveal>
-        </div>
-      </div>
+      {isMobile ? <VarmalaPreservationMobile /> : <VarmalaPreservationDesktop />}
     </section>
   );
 }
@@ -906,35 +687,11 @@ function WeddingCards() {
 /* ─────────── 10 home decor clocks ─────────── */
 
 function HomeDecorClocks() {
+  const isMobile = useIsMobile();
+  
   return (
     <section className="bg-[color:var(--color-cream)]">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-12 py-24 md:py-32">
-        <div className="grid grid-cols-12 gap-10 items-start">
-          <Reveal className="col-span-12 md:col-span-6 md:pr-6 flex flex-col justify-start">
-            <PageNumber n="10" />
-            <Eyebrow>Artistic Collection</Eyebrow>
-            <h2 className="mt-6 text-5xl md:text-6xl font-[family-name:var(--font-display)] text-[color:var(--color-dark-brown)] leading-[1.05]">
-              Home Decor <span className="script text-[color:var(--color-accent-brown)]">Clocks</span>
-            </h2>
-            <p className="mt-8 text-[15px] leading-8 font-light text-[color:var(--color-chocolate)] max-w-md">
-              A functional timepiece that doubles as a stunning work of art. Featuring
-              preserved floral arrangements, delicate gold accents, and silent high-quality
-              sweeps, all cast in a bespoke resin frame.
-            </p>
-          </Reveal>
-          <Reveal delay={150} className="col-span-12 md:col-span-6 px-3 sm:px-4 md:px-0">
-            <div className="relative">
-              <div className="absolute -inset-3 border border-[color:var(--color-rose-gold)]/40" />
-              <img
-                src={section10Img}
-                alt="Bespoke resin wall clock"
-                loading="lazy"
-                className="w-full aspect-[4/5] object-cover"
-              />
-            </div>
-          </Reveal>
-        </div>
-      </div>
+      {isMobile ? <HomeDecorClocksMobile /> : <HomeDecorClocksDesktop />}
     </section>
   );
 }
@@ -1170,97 +927,11 @@ function Gallery() {
 /* ─────────── 15 contact ─────────── */
 
 function Contact() {
+  const isMobile = useIsMobile();
+  
   return (
     <section id="contact" className="bg-[color:var(--color-dark-brown)] text-[color:var(--color-cream)]">
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-12 py-16 sm:py-20 md:py-24 lg:py-32">
-        <div className="grid grid-cols-12 gap-8 sm:gap-10 items-center">
-
-          {/* Portrait */}
-          <Reveal className="col-span-12 md:col-span-5 px-4 sm:px-6 md:px-0">
-            <div className="relative max-w-sm mx-auto md:max-w-none">
-              <div className="absolute inset-x-4 sm:inset-x-6 top-0 h-[92%] rounded-t-full bg-[color:var(--color-chocolate)]" />
-              <div className="relative overflow-hidden rounded-t-full aspect-[3/4] mx-4 sm:mx-6">
-                <img
-                  src={portraitAbout}
-                  alt="Sachida Sharma"
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <p className="script text-3xl sm:text-4xl md:text-5xl text-[color:var(--color-rose-gold)] absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
-                Let&rsquo;s Connect
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Right side content */}
-          <Reveal delay={150} className="col-span-12 md:col-span-7 md:pl-6">
-            <div className="text-[color:var(--color-rose-gold)] tracking-eyebrow text-center md:text-left">— 15 —</div>
-            <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] leading-[1.15] sm:leading-[1.1] md:leading-[1.05] text-center md:text-left">
-              Let&rsquo;s create something <span className="script text-[color:var(--color-rose-gold)]">beautiful</span>
-            </h2>
-            <p className="mt-5 sm:mt-6 max-w-lg mx-auto md:mx-0 text-[13.5px] sm:text-[14px] md:text-[15px] leading-[1.7] sm:leading-[1.75] md:leading-8 font-light text-[color:var(--color-cream)]/85 text-center md:text-left">
-              I&rsquo;d love to craft something meaningful for you. Tell me about
-              the moment you&rsquo;d like to preserve — a wedding, an engagement,
-              a name, a first — and we will take it slowly from there.
-            </p>
-
-            {/* Contact Details */}
-            <dl className="mt-8 sm:mt-10 flex flex-col gap-5 sm:gap-6 max-w-md mx-auto md:mx-0">
-              <div className="border-t border-[color:var(--color-rose-gold)]/40 pt-3 sm:pt-4 text-center md:text-left">
-                <dt className="tracking-eyebrow text-[color:var(--color-rose-gold)] text-[10px] sm:text-[11px]">Instagram</dt>
-                <dd className="mt-1.5 sm:mt-2 font-[family-name:var(--font-display)] text-lg sm:text-xl">
-                  <a 
-                    href="https://www.instagram.com/sachidaartistry/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[color:var(--color-rose-gold)] transition-colors"
-                  >
-                    @sachidaartistry
-                  </a>
-                </dd>
-              </div>
-              <div className="border-t border-[color:var(--color-rose-gold)]/40 pt-3 sm:pt-4 text-center md:text-left">
-                <dt className="tracking-eyebrow text-[color:var(--color-rose-gold)] text-[10px] sm:text-[11px]">Phone</dt>
-                <dd className="mt-1.5 sm:mt-2 font-[family-name:var(--font-display)] text-lg sm:text-xl">
-                  <a 
-                    href="https://wa.me/919541887431"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[color:var(--color-rose-gold)] transition-colors"
-                  >
-                    +91 95418 87431
-                  </a>
-                </dd>
-              </div>
-              <div className="border-t border-[color:var(--color-rose-gold)]/40 pt-3 sm:pt-4 text-center md:text-left">
-                <dt className="tracking-eyebrow text-[color:var(--color-rose-gold)] text-[10px] sm:text-[11px]">Location</dt>
-                <dd className="mt-1.5 sm:mt-2 font-[family-name:var(--font-display)] text-base sm:text-lg leading-relaxed">
-                  📍 Jammu<br />🚚 Shipping Pan India
-                </dd>
-              </div>
-            </dl>
-
-            {/* QR Code - Centered on mobile */}
-            <div className="mt-8 sm:mt-10 flex justify-center md:justify-start">
-              <div className="border border-[color:var(--color-rose-gold)]/40 p-4 sm:p-5 flex flex-col items-center gap-3 sm:gap-4 w-48 sm:w-52">
-                <img
-                  src={instaQr}
-                  alt="Instagram QR code"
-                  className="w-36 h-36 sm:w-40 sm:h-40 object-cover"
-                />
-                <div className="text-center">
-                  <p className="tracking-eyebrow text-[color:var(--color-rose-gold)] text-[9px] sm:text-[10px]">Follow on Instagram</p>
-                  <p className="mt-1 font-[family-name:var(--font-display)] text-base sm:text-lg text-[color:var(--color-cream)]">@sachidaartistry</p>
-                  <p className="mt-1 text-[10px] sm:text-[11px] font-light text-[color:var(--color-cream)]/60">Scan to follow ✦</p>
-                </div>
-              </div>
-            </div>
-
-          </Reveal>
-
-        </div>
-      </div>
+      {isMobile ? <ContactMobile /> : <ContactDesktop />}
     </section>
   );
 }
